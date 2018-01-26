@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colorful Numbers</title>
+
+</head>
+<body>
+<script>
+    function colorNums(number) {
+
+       let html="<ul>";
+        for (let i = 1; i <= number; i++) {
+            let color='green';
+            if (i % 2 === 0) {
+                color = 'blue';
+            }
+            html+=`<li><span style='color: ${color}'>${i}</span></li>`;
+
+
+        }
+       html+="</ul>";
+        return html;
+
+    }
+    document.body.innerHTML = colorNums(['10']);
+
+</script>
+
+
+
+</body>
+</html>

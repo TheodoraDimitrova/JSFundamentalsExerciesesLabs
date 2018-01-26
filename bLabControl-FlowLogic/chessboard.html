@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess</title>
+</head>
+<body>
+<script>
+    let css = document.createElement("style");
+    css.innerHTML = `body { background: #CCC; }
+                    .chessboard { display: inline-block; }
+                     .black, .white { width:50px; height:50px;
+                      display: inline-block; }
+                      .black { background: black; }
+                      .white { background: white; }`;
+    function chessboard(size) {
+        colorcol = `<div class="chessboard">`;
+        for (let row = 1; row <= size; row++) {
+            let color="";
+
+            if (row % 2 !== 0) {//ne chetni redove->zapochvat s cherno
+                for (let col = 1; col <= size; col++) {
+                    if (col % 2 !== 0) {
+                        color="black";
+                        colorcol += `<span class="${color}"></span>`;
+                    } else {
+                        color="white";
+                        colorcol += `<span class="${color}"></span>`;
+                    }
+
+                }
+                colorcol+=`<br>`;
+
+
+            }
+            else {//chetnite s bqlo
+                for (let col = 1; col <= size; col++) {
+                    if (col % 2 !== 0) {
+                        color="white";
+                        colorcol += `<span class="${color}"></span>`;
+                    } else {
+                        color="black";
+                        colorcol += `<span class="${color}"></span>`;
+                    }
+                }
+                colorcol+=`<br>`;
+
+
+            }
+
+        }
+        return colorcol += `</div>`
+    }
+
+    document.getElementsByTagName("head")[0].appendChild(css);
+    document.body.innerHTML = chessboard(5);
+
+</script>
+
+</body>
+</html>
