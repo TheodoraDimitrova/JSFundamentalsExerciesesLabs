@@ -1,14 +1,12 @@
 function escaping(input) {
-    let forbidden = ["&", "<", ">", '"'];
-    let allowed = ["&amp;", "&lt;", "&gt;", "&quot;"];
-
     let html = "<ul>\n";
 
-    for(let line of input) {
+    for (let line of input) {
         html += "  <li>";
-        for(let i in forbidden) {
-            line = line.split(forbidden[i]).join(allowed[i]);
-        }
+        line = line.replace(/&/g, "&amp;");
+        line = line.replace(/</g, "&lt;");
+        line = line.replace(/>/g, "&gt;");
+        line = line.replace(/"/g, "&quot;");
         html += line + "</li>\n";
     }
 
@@ -16,3 +14,4 @@ function escaping(input) {
 
     return html;
 }
+console.log(escaping(['<div style=\"color: red;\">Hello, Red!</div>', '<table><tr><td>Cell 1</td><td>Cell 2</td><tr>']));
